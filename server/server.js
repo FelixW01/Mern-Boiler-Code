@@ -4,7 +4,6 @@ const express = require("express");
 const { json, urlencoded } = express;
 const mongoose = require("mongoose");
 require("dotenv").config();
-// const db = require('./config/connection');
 
 // app
 const app = express();
@@ -23,16 +22,14 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 
 // routes
-const testRoutes = require("./routes/test");
+const routes = require("./routes");
 
-app.use("/", testRoutes);
+app.use("/", routes);
 
 // port
 const port = process.env.PORT || 3001;
 
 // listener
-// db.once('open', () => {
     app.listen(port, () => {
       console.log(`Server running on port ${port}!`);
     });
-//   });
